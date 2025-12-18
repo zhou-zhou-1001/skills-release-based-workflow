@@ -21,48 +21,49 @@ _掌握以 GitHub Flow 为基础的发布型工作流程（release based workflo
 </header>
 
 <!--
-  <<< Author notes: Step 4 >>>
+  <<< Author notes: Step 5 >>>
   Start this step by acknowledging the previous step.
   Define terms and link to docs.github.com.
 -->
 
-## Step 4: 生成发布说明并完成合并
+## Step 5: 完成最终发布
 
-_你成功创建了一个 Release PR :dancer:_
+### 完成发布前的准备
 
-### 自动生成发布说明
+在正式发布前，你需要确认哪些信息会在 GitHub 上公开显示。在之前的预发布（Pre-release）版本中，你已经能看到版本号和提交记录等内容。
 
-版本发布时我们一般需要填写发布说明，好让用户和团队成员快速了解本次更新包含了哪些新功能、修复了哪些问题，以及其他重要变更。 
-GitHub提供了[自动生成发布说明](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes)的功能，可以替代手动编写发布说明。 
-通过它，你能快速生成一个版本更新概览，其中包括：
+![image](https://user-images.githubusercontent.com/13326548/47883578-bdba7780-ddea-11e8-84b8-563e12f02ca6.png)
 
-* 已合并的拉取请求列表
-* 本次发布的贡献者名单
-* 完整变更日志的链接
+### 语义化版本（Semantic Versioning）
 
-生成后，你也可以根据需要对内容进行自定义修改。
+**语义化版本号**是一种标准化的版本命名规则，用来表达兼容性与变更内容。
+它由三部分组成： 
 
-### :keyboard: 实操环节：生成发布说明
+> 主版本号（major） · 次版本号（minor） · 修订号（patch）。
+
+版本号的变化能直接体现代码的修改程度。例如：
+
+| 代码状态              |   阶段    | 规则                          | 示例版本 |
+|---------------------|-----------|------------------------------| ------- |
+| 第一次发布            | 新产品     | 从 1.0.0 开始                 | 1.0.0   |
+| 向下兼容的修复         | 修订版     | 第三位加一                     | 1.0.1   |
+| 向下兼容的新功能       | 小版本更新  | 第二位加一，并将第三位归零        | 1.1.0   |
+| 不兼容的更新          | 大版本更新  | 第一位加一，并将后两位归零        | 2.0.0   |
+
+如果你想深入了解，可以阅读 [语义化版本规范（Semantic Versioning）](https://semver.org/)。
+
+### 发布正式版本
+
+现在，我们要将刚才保存为 *草稿* 的发布，更新为真正的 *正式版本*。
+
+### :keyboard: 实操环节：完成发布
 
 1. 打开一个新的浏览器标签页，进入当前仓库的 **Releases** 页面。
-   - 提示：点击仓库顶部的 **Code** 标签页，然后在仓库描述下方的导航栏中，点击 **Releases** 链接即可进入。
-2. 点击 **Draft a new release**（创建新发布草稿）。
-3. 在 *Tag version* 输入框中填写 `v1.0.0`。
-4. 在标签右侧的 *Target* 下拉菜单中，选择分支 `release-v1.0`。
-   - *提示：这是临时设置，用于基于该分支的变更生成发布说明。*
-5. 在描述框右上角点击 **Generate release notes**（生成发布说明）。
-6. 查看自动生成的发布说明，如有需要可在文本框中自行调整内容。
-7. 将 *Target* 分支改回 `main`，因为最终发布的标签应创建在主分支上。
-8. 点击 **Save draft**（保存草稿），稍后我们会正式发布该版本。
-
-现在你可以[合并](https://docs.github.com/en/get-started/quickstart/github-glossary#merge)你的拉取请求啦！
-
-### :keyboard: 实操环节：合并到主分支
-
-1. 打开一个新的标签页，进入仓库的 **Pull requests** 页面。
-2. 找到并打开你之前创建的 **Release v1.0** 拉取请求。
-3. 点击 **Merge pull request**（合并拉取请求）。
-4. 等待大约 20 秒，然后刷新本页。[GitHub Actions](https://docs.github.com/en/actions) 将自动检测进度并进入下一步。
+   - 提示：点击仓库顶部的 **Code** 标签页，然后在仓库描述下方的导航栏中，点击 **Releases** 链接。
+2. 点击草稿发布右侧的 **Edit**（编辑）按钮。
+3. 确认 *Target* 分支设置为 `main`。
+4. 点击 **Publish release**（发布版本）。
+5. 等待大约 20 秒后刷新此页面。[GitHub Actions](https://docs.github.com/en/actions) 会自动检测并进入下一步。
 
 <footer>
 
