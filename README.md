@@ -21,33 +21,32 @@ _掌握以 GitHub Flow 为基础的发布型工作流程（release based workflo
 </header>
 
 <!--
-  <<< Author notes: Step 7 >>>
-  Start this step by acknowledging the previous step.
-  Define terms and link to docs.github.com.
+  <<< Author notes: Finish >>>
+  Review what we learned, ask for feedback, provide next steps.
 -->
 
-## Step 7: 创建发布版本 v1.0.1
+## 完成
 
-_最后一步啦!_
+<img src="https://octodex.github.com/images/snowtocat_final.jpg" alt=celebrate width=300 align=right>
 
-### 最终发布
+### 恭喜你！你已经顺利完成了本课程！
 
-虽然你已经更新了源码，但用户还无法直接获取这些最新改动，我们还需要重新发版。
+下面是课程内容回顾
 
-### 创建发布版本 v1.0.1
+- 创建了一个 **测试发布版本（beta release）**
+- 为发布分支添加了新功能
+- 创建了一个 **发布拉取请求（release pull request）**
+- 自动生成了发布说明
+- 合并并完成了发布分支
+- 提交了一个 **热修复（hotfix）**
+- 创建了正式版本 **v1.0.1**
 
-得益于之前撰写良好的拉取请求（Pull Request）和自动生成的发布说明（release notes），你不需要花太多时间手动编辑发布内容。
-按照下面的步骤操作即可完成新版本的创建、生成发布说明并发布。
+### 接下来你可以做什么？
 
-### :keyboard: 实操环节: 完成发布
-
-1. 在浏览器中打开一个新的标签页，进入当前仓库的 **Releases** 页面。
-2. 点击 **Draft a new release**（草拟新发布）按钮。
-3. 将 **Target**（目标分支）设置为 `main`。遵守语义化版本号规则，新版本命名为 `v1.0.1`
-4. 在描述输入框右上角，点击 **Generate release notes**（生成发布说明）。
-5. 仔细查看生成的发布说明，如有需要可稍作修改，让内容更符合你的项目。
-6. 点击 **Publish release**（发布版本）。
-7. 等待大约 20 秒，然后刷新本页面（就是你正在阅读的这个教程页面）。[GitHub Actions](https://docs.github.com/en/actions) 会自动检测你的进度并进入下一步。
+- [分享你对本课程的反馈](https://github.com/orgs/skills/discussions/categories/release-based-workflow)
+- [继续学习其他 GitHub Skills 课程](https://github.com/skills)
+- [阅读 GitHub 的入门文档](https://docs.github.com/en/get-started)
+- [在 GitHub Explore 中发现更多可参与的项目](https://github.com/explore)
 
 <footer>
 
