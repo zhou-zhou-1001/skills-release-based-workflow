@@ -21,49 +21,59 @@ _掌握以 GitHub Flow 为基础的发布型工作流程（release based workflo
 </header>
 
 <!--
-  <<< Author notes: Step 5 >>>
+  <<< Author notes: Step 6 >>>
   Start this step by acknowledging the previous step.
   Define terms and link to docs.github.com.
 -->
 
-## Step 5: 完成最终发布
+## Step 6: 提交一个热修复（hotfix）
 
-### 完成发布前的准备
+_离完成就差一步啦 :heart:_
+ 
+你可能注意到了，我并没有删除那个分支 —— 这是**有意为之**的。
 
-在正式发布前，你需要确认哪些信息会在 GitHub 上公开显示。在之前的预发布（Pre-release）版本中，你已经能看到版本号和提交记录等内容。
+在实际项目中，发版后发现问题的情况并不少见。为了能及时修复，我们通常会在同一个发布分支上直接提交补丁，而不是重新开始。
 
-![image](https://user-images.githubusercontent.com/13326548/47883578-bdba7780-ddea-11e8-84b8-563e12f02ca6.png)
+现在发布已完成，记得我们前面说过，我故意引入了一个 bug：本想只把文字颜色改为绿色，结果整个游戏背景都被改了。
 
-### 语义化版本（Semantic Versioning）
+_注意: GitHub Pages 更新有时需要几分钟，页面可能不会立刻显示你的最新改动。_
 
-**语义化版本号**是一种标准化的版本命名规则，用来表达兼容性与变更内容。
-它由三部分组成： 
+![image](https://user-images.githubusercontent.com/13326548/48045461-487dd800-e145-11e8-843c-b91a82213eb8.png)
 
-> 主版本号（major） · 次版本号（minor） · 修订号（patch）。
+这种快速修复软件中 bug 的操作，称为热修复（hotfix）。它是软件开发中的常规流程，你可能在其他App更新日志中经常见过类似描述：“修复了一些已知问题” —— 这通常就是热修复。
 
-版本号的变化能直接体现代码的修改程度。例如：
+我们已为你创建好两个分支：
 
-| 代码状态              |   阶段    | 规则                          | 示例版本 |
-|---------------------|-----------|------------------------------| ------- |
-| 第一次发布            | 新产品     | 从 1.0.0 开始                 | 1.0.0   |
-| 向下兼容的修复         | 修订版     | 第三位加一                     | 1.0.1   |
-| 向下兼容的新功能       | 小版本更新  | 第二位加一，并将第三位归零        | 1.1.0   |
-| 不兼容的更新          | 大版本更新  | 第一位加一，并将后两位归零        | 2.0.0   |
+- `hotfix-v1.0.1`
+- `fix-game-background`
 
-如果你想深入了解，可以阅读 [语义化版本规范（Semantic Versioning）](https://semver.org/)。
+接下来，我们将通过创建并合并 Pull Request 完成热修复：先合并到热修复分支，再同步到 main。
 
-### 发布正式版本
+### :keyboard: 实操环节：创建并合并hotfix拉取请求
 
-现在，我们要将刚才保存为 *草稿* 的发布，更新为真正的 *正式版本*。
+1. 创建一个新的拉取请求，选择 `base: hotfix-v1.0.1`，对比分支为 `compare: fix-game-background`。
+2. 填写标题与描述。可以将标题设为 **Hotfix for broken game style**，描述如下：
+   ```
+   ## Description:
+   - Fixed bug, set game background back to black
+   ```
+3. 检查修改内容，点击 **Create pull request**。
+4. 点击 **Merge pull request**（合并拉取请求）将修复合并进 hotfix 分支。
 
-### :keyboard: 实操环节：完成发布
+现在，我们还需要把这次修复同步到主分支 `main`。
 
-1. 打开一个新的浏览器标签页，进入当前仓库的 **Releases** 页面。
-   - 提示：点击仓库顶部的 **Code** 标签页，然后在仓库描述下方的导航栏中，点击 **Releases** 链接。
-2. 点击草稿发布右侧的 **Edit**（编辑）按钮。
-3. 确认 *Target* 分支设置为 `main`。
-4. 点击 **Publish release**（发布版本）。
-5. 等待大约 20 秒后刷新此页面。[GitHub Actions](https://docs.github.com/en/actions) 会自动检测并进入下一步。
+### :keyboard: 实操环节: 将热修复合并到主分支
+
+1. 创建一个新的拉取请求，选择 `base: main`，对比分支为 `compare: hotfix-v1.0.1`。
+2. 设置标题为 **Hotfix v1.0.1**。
+   你可以参考以下示例描述：
+   ```markdown
+   ## Description:
+   - Fixed bug introduced in last production release - set game background back to black
+   ```
+3. 检查修改内容，点击 **Create pull request**。
+4. 点击 **Merge pull request** 完成合并。
+5. 等待约 20 秒后刷新此页面，[GitHub Actions](https://docs.github.com/en/actions) 会自动检测并进入下一步。
 
 <footer>
 
